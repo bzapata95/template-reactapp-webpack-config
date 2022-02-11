@@ -1,14 +1,14 @@
-const path = require("path");
-const merge = require("webpack-merge");
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const common = require("./webpack.config.js");
+const path = require('path');
+const merge = require('webpack-merge');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const common = require('./webpack.config.js');
 
 module.exports = merge.merge(common, {
-  mode: "development",
-  devtool: "inline-source-map",
+  mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
     static: {
-      directory: path.resolve(__dirname, "public"),
+      directory: path.resolve(__dirname, 'public'),
     },
     port: 3000,
     hot: true,
@@ -21,9 +21,9 @@ module.exports = merge.merge(common, {
         test: /\.[jt]sx$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            plugins: [require.resolve("react-refresh/babel")].filter(Boolean),
+            plugins: [require.resolve('react-refresh/babel')].filter(Boolean),
           },
         },
       },
@@ -32,8 +32,8 @@ module.exports = merge.merge(common, {
   externals: {
     // global app config object
     config: JSON.stringify({
-      env: "development",
-      apiUrl: "https://apistaging.iu.com.pe",
+      env: 'development',
+      apiUrl: 'http://localhost:3333',
     }),
   },
 });
